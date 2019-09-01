@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ricknmorty';
+  title = 'Rick and Morty DB';
+
+  public paginas: any = [
+    {
+      'nome': 'Locais',
+      'url': '/locais'
+    },
+    {
+      'nome': 'Personagens',
+      'url': '/personagens'
+    }
+  ]
+
+  public isActive(url): boolean {
+    return window.location.href.indexOf(url) > 0;
+  }
 }

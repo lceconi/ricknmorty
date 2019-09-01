@@ -1,0 +1,17 @@
+<table mdbTable striped="true" hover="true">
+    <thead>
+        <tr>
+        <th *ngFor="let item of itens" scope="col">{{ item }} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let el of dados">
+        <th scope="row">{{el.id}}</th>
+        <td>{{el.name}}</td>
+        <td>{{el.type}}</td>
+        <td>{{el.dimension}}</td>
+        <td><a href="">Detalhes</a></td>
+        <!-- <td>{{el.residents}}</td> -->
+        </tr>
+    </tbody>
+</table>
