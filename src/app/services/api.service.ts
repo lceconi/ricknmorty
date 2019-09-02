@@ -9,8 +9,14 @@ export class ApiService {
 
   constructor(private http: HttpClient,) { }
 
-  public getLocais() {
+  public getLocais(id: string = '') {
     let url = this.HOST + 'location/';
+    if (id) url = url + id + '/';
     return this.http.get(url);
   }
+
+  public getPersonagem(url) {
+    return this.http.get(url);
+  }
+
 }

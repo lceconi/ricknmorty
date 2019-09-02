@@ -1,0 +1,52 @@
+<h1>Local</h1>
+<div class="row">
+    <div class="col-4">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4"><strong>Nome</strong></div>
+                    <div class="col-8">{{ local?.name }}</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4"><strong>Tipo</strong></div>
+                    <div class="col-8">{{ local?.type }}</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4"><strong>Dimensão</strong></div>
+                    <div class="col-8">{{ local?.dimension }}</div>
+                </div>
+            </li>
+        </ul>
+    </div>        
+</div>
+<h2>Moradores</h2>
+        <div class="row">
+            <div class="col-3 mb-5" *ngFor="let p of personagens">
+                <a>
+                    <mdb-card>
+                            <mdb-card-img [src]="p.image" [alt]="p.name"></mdb-card-img>
+                            <mdb-card-body>
+                            
+                                <!--Title-->
+                                <mdb-card-title>
+                                <h4>{{ p.name }}</h4>
+                                </mdb-card-title>
+                            
+                                <!--Text-->
+                                <mdb-card-text> 
+                                    <p><strong>Local de origem</strong> 
+                                        <br/><a>{{ p.location.name }}</a></p>
+                                    <p class="mb-0"><strong>Raça</strong> 
+                                        <br/><a>{{ p.species }}</a></p>
+                                </mdb-card-text>
+                            
+                                <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>+ Detalhes</a> -->
+                            </mdb-card-body>
+                        </mdb-card>
+                    </a>
+            </div>
+        </div>

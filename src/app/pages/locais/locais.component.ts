@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LocaisComponent implements OnInit {
     'Moradores'
   ]
 
-  constructor(public api: ApiService) { }
+  constructor(public api: ApiService, public router: Router) { }
 
   ngOnInit() {
     this.carregarLocais();
@@ -28,6 +29,10 @@ export class LocaisComponent implements OnInit {
     this.api.getLocais().subscribe(response => {
       this.locais = response['results'];
     })
+  }
+
+  public acessarLocal(id) {
+    this.router.navigate(['locais', id]);
   }
 
 }

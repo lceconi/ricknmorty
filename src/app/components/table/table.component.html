@@ -5,13 +5,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr mdbTableCol *ngFor="let el of dados">
-        <th scope="row">{{el.id}}</th>
-        <td>{{el.name}}</td>
-        <td>{{el.type}}</td>
-        <td>{{el.dimension}}</td>
-        <td><a href="">Detalhes</a></td>
-        <!-- <td>{{el.residents}}</td> -->
+        <tr mdbTableCol *ngFor="let dado of dados">
+        <th scope="row">{{ dado.id }}</th>
+        <td>{{ dado.name }}</td>
+        <td>{{ dado.type }}</td>
+        <td>{{ dado.dimension }}</td>
+        <td>{{ dado.residents.length }}</td>
+        <td><a (click)="emitAcessarDetalhe(dado.id)">+ Detalhes</a></td>
         </tr>
     </tbody>
 </table>
