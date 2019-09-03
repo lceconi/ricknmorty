@@ -1,8 +1,16 @@
 <h1>Locais</h1>
-
+<div class="row">
+  <div class="col-12 col-md-4">
+    <div class="md-form">
+      <input mdbInput type="text" id="pesquisaLocal" class="form-control" (keyup)='pesquisarLocal($event)'>
+      <label for="pesquisaLocal" class="">Pesquisar local</label>
+    </div>
+    <p>{{ mensagemFiltro }}</p>
+  </div>
+</div>
 <div class="row">
   <div class="col-12">
-    <tabela [itens]="itensCabecalho" [dados]="locais" [detalhes]="true" (acessarDetalhe)="acessarLocal($event)">
+    <tabela *ngIf="listaLocaisFiltrados.length" [itens]="itensCabecalho" [dados]="listaLocaisFiltrados" [detalhes]="true" (acessarDetalhe)="acessarLocal($event)">
     </tabela>
   </div>
 </div>

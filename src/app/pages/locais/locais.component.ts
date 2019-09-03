@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
 export class LocaisComponent implements OnInit {
 
   public titulo: string = 'Locais';
-  public locais: any
-  public itensCabecalho = ['#', 'Nome', 'Tipo', 'Dimensão', 'Moradores']
+  public locais: any;
+  public listaLocaisFiltrados: any = [];
+  public mensagemFiltro: string;
+  public itensCabecalho = ['#', 'Nome', 'Tipo', 'Dimensão', 'Moradores'];
 
   constructor(public api: ApiService, public router: Router) { }
 
@@ -22,7 +24,27 @@ export class LocaisComponent implements OnInit {
   public carregarLocais(): any {
     this.api.getDados('location').subscribe(response => {
       this.locais = response['results'];
+      this.listaLocaisFiltrados = this.locais;
     })
+  }
+
+  public pesquisarLocal(event) {
+    this.mensagemFiltro = '';
+    const valor = event.target.value;
+
+    if (valor.length > 1) {
+      this.listaLocaisFiltrados = this.locais.filter(personagem => {
+        return personagem.name.toLowerCase().indexOf(valor.toLowerCase()) > -1;
+      });
+    } else {
+      this.mensagemFiltro = '';
+      this.listaLocaisFiltrados = this.locais;
+      return;
+    }
+
+    if (valor && !this.listaLocaisFiltrados.length) {
+      this.mensagemFiltro = 'Nenhum local encontrado.';
+    }
   }
 
   public acessarLocal(id) {

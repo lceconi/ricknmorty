@@ -1,6 +1,15 @@
 <h1>Personagens</h1>
 <div class="row">
-  <div class="col-12 col-md-3 mb-5" *ngFor="let p of personagens">
+  <div class="col-12 col-md-4">
+    <div class="md-form">
+      <input mdbInput type="text" id="pesquisarPersonagem" class="form-control" (keyup)='pesquisarPersonagem($event)'>
+      <label for="pesquisarPersonagem" class="">Pesquisar personagem</label>
+    </div>
+    <p>{{ mensagemFiltro }}</p>
+  </div>
+</div>
+<div class="row">  
+  <div class="col-12 col-md-3 mb-5" *ngFor="let p of listaPersonagensFiltrados">    
     <card-personagem [item]="p" (acessarDetalhe)="acessarPersonagem($event)"></card-personagem>
   </div>
 </div>

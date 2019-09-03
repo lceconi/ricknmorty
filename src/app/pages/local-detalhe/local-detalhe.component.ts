@@ -10,7 +10,9 @@ export class LocalDetalheComponent implements OnInit {
 
   public local_id: string;
   public local: any;
+  public listaLocaisFiltrados: any = [];
   public personagens: any;
+  public mensagemFiltro: string;
 
   constructor(
     public route: ActivatedRoute, 
