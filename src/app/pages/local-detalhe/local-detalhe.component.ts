@@ -24,14 +24,16 @@ export class LocalDetalheComponent implements OnInit {
     this.carregarLocal();
   }
 
-  public carregarLocal(): any {
+  public carregarLocal(): void {
     this.api.getDados('location', this.local_id).subscribe(response => {
       this.local = response;
-      this.carregaPersonagens(response['residents']);
+      if (response['residents'].length > 0) {
+        this.carregaPersonagens(response['residents']);
+      }
     });
   }
 
-  public carregaPersonagens(urlResidents) {
+  public carregaPersonagens(urlResidents): void {
     let personagens_ids = [];
     for (let i in urlResidents) {
       let p_id = urlResidents[i].split(/[/ ]+/).pop();
@@ -42,7 +44,7 @@ export class LocalDetalheComponent implements OnInit {
     });
   }
 
-  public acessarPersonagem(id) {
+  public acessarPersonagem(id): void {
     this.router.navigate(['personagens', id]);
   }
 

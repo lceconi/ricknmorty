@@ -10,7 +10,7 @@ export class PersonagemDetalheComponent implements OnInit {
 
   public personagem_id: string;
   public personagem: any;
-  public episodios: any;
+  public episodios: any = [];
   public itensCabecalho = ['#', 'Nome', 'Data de Exibição', 'Episódio']
 
   constructor(
@@ -23,21 +23,25 @@ export class PersonagemDetalheComponent implements OnInit {
     this.carregarPersonagem();
   }
 
-  public carregarPersonagem(): any {
+  public carregarPersonagem(): void {
     this.api.getDados('character', this.personagem_id).subscribe(response => {
       this.personagem = response;
       this.carregaEpisodios(response['episode']);
     });
   }
 
-  public carregaEpisodios(urlEpisodes) {
+  public carregaEpisodios(urlEpisodes): void {
     let episodios_ids = [];
     for (let i in urlEpisodes) {
       let e_id = urlEpisodes[i].split(/[/ ]+/).pop();
       episodios_ids.push(e_id);      
     }
     this.api.getDadosArray('episode', episodios_ids).subscribe(response => {
-      this.episodios = response;
+      if (Array.isArray(response)) {
+        this.episodios = response;
+      } else {
+        this.episodios = [response];
+      }
     });
   }
 

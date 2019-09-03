@@ -18,18 +18,18 @@ export class PersonagensComponent implements OnInit {
     this.carregarPersonagens();
   }
 
-  public carregarPersonagens(): any {
+  public carregarPersonagens(): void {
     this.api.getDados('character').subscribe(response => {
       this.personagens = response['results'];
       this.listaPersonagensFiltrados = this.personagens;
     })
   }
 
-  public acessarPersonagem(id) {
+  public acessarPersonagem(id): void {
     this.router.navigate(['personagens', id]);
   }
 
-  public pesquisarPersonagem(event) {
+  public pesquisarPersonagem(event): string {
     this.mensagemFiltro = '';
     const valor = event.target.value;
 

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { InicialComponent } from './inicial.component';
-import { CardsModule, IconsModule } from 'angular-bootstrap-md';
+import { CardsModule } from 'angular-bootstrap-md';
 
 const routes: Routes = [
   {
@@ -16,8 +16,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    CardsModule,
-    IconsModule
+    CardsModule
   ],
   declarations: [InicialComponent]
 })

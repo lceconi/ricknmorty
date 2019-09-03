@@ -21,14 +21,14 @@ export class LocaisComponent implements OnInit {
     this.carregarLocais();
   }
 
-  public carregarLocais(): any {
+  public carregarLocais(): void {
     this.api.getDados('location').subscribe(response => {
       this.locais = response['results'];
       this.listaLocaisFiltrados = this.locais;
     })
   }
 
-  public pesquisarLocal(event) {
+  public pesquisarLocal(event): void {
     this.mensagemFiltro = '';
     const valor = event.target.value;
 
@@ -47,7 +47,7 @@ export class LocaisComponent implements OnInit {
     }
   }
 
-  public acessarLocal(id) {
+  public acessarLocal(id): void {
     this.router.navigate(['locais', id]);
   }
 

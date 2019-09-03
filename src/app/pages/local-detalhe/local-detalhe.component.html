@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<h2>Moradores</h2>
+<h2 *ngIf="personagens">Moradores</h2>
 <div class="row">
   <div class="col-12 col-md-3 mb-5" *ngFor="let p of personagens">
     <card-personagem [item]="p" (acessarDetalhe)="acessarPersonagem($event)"></card-personagem>

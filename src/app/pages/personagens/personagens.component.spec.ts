@@ -34,11 +34,17 @@ describe('PersonagensComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Personagens');
   });
 
+  // Não está funcionando
   // it('filtro deve retornar um personagem', () => {
-  //   const fixture = new PersonagensComponent;
-  //   // fixture.detectChanges();
-  //   const filtro = 'Morty Smith';
-  //   const compiled = fixture.pesquisarPersonagem(filtro);
-  //   expect(compiled[0].name).toContain(filtro);
-  // })
+  //   const fixture = TestBed.createComponent(PersonagensComponent);
+  //   fixture.detectChanges();
+  //   fixture.componentInstance.carregarPersonagens();
+  //   let event = {
+  //     target: {
+  //       value: 'Morty Smith'
+  //     }
+  //   }
+  //   const compiled = fixture.componentInstance.pesquisarPersonagem(event);
+  //   expect(compiled[0].name).toContain(event.target.value);
+  // });
 });
