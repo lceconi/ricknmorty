@@ -5,13 +5,12 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-local-detalhe',
   templateUrl: './local-detalhe.component.html',
-  styleUrls: ['./local-detalhe.component.scss']
 })
 export class LocalDetalheComponent implements OnInit {
 
   public local_id: string;
   public local: any;
-  public personagens = []
+  public personagens: any;
 
   constructor(
     public route: ActivatedRoute, 
@@ -24,18 +23,25 @@ export class LocalDetalheComponent implements OnInit {
   }
 
   public carregarLocal(): any {
-    this.api.getLocais(this.local_id).subscribe(response => {
+    this.api.getDados('location', this.local_id).subscribe(response => {
       this.local = response;
-      this.carregaPersonagens(response['residents'])
+      this.carregaPersonagens(response['residents']);
     });
   }
 
   public carregaPersonagens(urlResidents) {
+    let personagens_ids = [];
     for (let i in urlResidents) {
-      this.api.getPersonagem(urlResidents[i]).subscribe(response => {
-        this.personagens.push(response);
-      });
+      let p_id = urlResidents[i].split(/[/ ]+/).pop();
+      personagens_ids.push(p_id);      
     }
+    this.api.getDadosArray('character', personagens_ids).subscribe(response => {
+      this.personagens = response;
+    });
+  }
+
+  public acessarPersonagem(id) {
+    this.router.navigate(['personagens', id]);
   }
 
 }

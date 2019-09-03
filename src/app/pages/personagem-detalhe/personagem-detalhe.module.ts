@@ -4,13 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CardsModule, IconsModule, TableModule } from 'angular-bootstrap-md';
 
-import { LocaisComponent } from './locais.component';
+import { PersonagemDetalheComponent } from './personagem-detalhe.component';
 import { TableComponentModule } from 'src/app/components/table/table.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: LocaisComponent
+    component: PersonagemDetalheComponent
   }
 ];
 
@@ -21,10 +21,10 @@ const routes: Routes = [
     CardsModule,
     IconsModule,
     TableModule,
-    TableComponentModule,
+    TableComponentModule
   ],
   declarations: [
-    LocaisComponent,
+    PersonagemDetalheComponent
   ]
 })
-export class LocaisComponentModule {}
+export class PersonagemDetalheComponentModule {}

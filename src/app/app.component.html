@@ -1,18 +1,18 @@
 <mdb-navbar SideClass="navbar navbar-expand-md navbar-dark green">
 
-    <mdb-navbar-brand><a class="navbar-brand" href="/"><h1>Rick and Morty's DB</h1></a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="/"><h1 class="mb-0">Rick and Morty DB</h1></a></mdb-navbar-brand>
 
     <links>
 
         <!-- Links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" *ngFor="let p of paginas" [ngClass]="{'active':isActive(p.url)}">
-                <a class="nav-link waves-light" mdbWavesEffect>{{ p.nome }}</a>
+                <a class="nav-link waves-light" [routerLink]="p.url" mdbWavesEffect>{{ p.nome }}</a>
             </li>
         </ul>
     </links>
 </mdb-navbar>
 
-<div class="container pt-5">
+<div class="container pt-4">
 <router-outlet></router-outlet>
 </div>

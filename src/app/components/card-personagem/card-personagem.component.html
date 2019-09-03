@@ -1,0 +1,22 @@
+
+<a (click)="emitAcessarDetalhe(item.id)">
+    <mdb-card>
+            <mdb-card-img [src]="item.image" [alt]="item.name"></mdb-card-img>
+            <mdb-card-body>
+            
+                <!--Title-->
+                <mdb-card-title>
+                <h5>{{ item.name }}</h5>
+                </mdb-card-title>
+            
+                <!--Text-->
+                <mdb-card-text> 
+                    <p><strong>Local de origem</strong> 
+                        <br/><a>{{ item.location.name }}</a></p>
+                    <p class="mb-0"><strong>Raça</strong> 
+                        <br/><a>{{ item.species }}</a></p>
+                </mdb-card-text>
+            
+            </mdb-card-body>
+        </mdb-card>
+    </a>

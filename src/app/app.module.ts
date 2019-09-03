@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NavbarModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    NavbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

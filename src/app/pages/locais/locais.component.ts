@@ -5,19 +5,13 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-locais',
-  templateUrl: './locais.component.html',
-  styleUrls: ['./locais.component.scss']
+  templateUrl: './locais.component.html'
 })
 export class LocaisComponent implements OnInit {
 
+  public titulo: string = 'Locais';
   public locais: any
-  public itensCabecalho = [
-    '#',
-    'Nome',
-    'Tipo',
-    'Dimensão',
-    'Moradores'
-  ]
+  public itensCabecalho = ['#', 'Nome', 'Tipo', 'Dimensão', 'Moradores']
 
   constructor(public api: ApiService, public router: Router) { }
 
@@ -26,7 +20,7 @@ export class LocaisComponent implements OnInit {
   }
 
   public carregarLocais(): any {
-    this.api.getLocais().subscribe(response => {
+    this.api.getDados('location').subscribe(response => {
       this.locais = response['results'];
     })
   }

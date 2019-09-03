@@ -1,15 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'tabela',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  selector: 'card-personagem',
+  templateUrl: './card-personagem.component.html',
+  styleUrls: ['./card-personagem.component.scss']
 })
-export class TableComponent implements OnInit {
+export class CardPersonagemComponent implements OnInit {
 
-  @Input('itens') itens: any;
-  @Input('dados') dados: any;
-  @Input('detalhes') detalhes: boolean;
+  @Input('item') item: any;
   @Output() acessarDetalhe = new EventEmitter();
 
   constructor() { }
