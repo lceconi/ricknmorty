@@ -1,21 +1,21 @@
 <div class="table-responsive">
-<table mdbTable striped="true" hover="true">
+  <table mdbTable striped="true" hover="true">
     <thead>
-        <tr>
+      <tr>
         <th *ngFor="let item of itens" scope="col">{{ item }} </th>
-        </tr>
+      </tr>
     </thead>
     <tbody>
-        <tr mdbTableCol *ngFor="let dado of dados">
+      <tr mdbTableCol *ngFor="let dado of dados">
         <th scope="row">{{ dado.id }}</th>
         <td>{{ dado.name }}</td>
         <td *ngIf="dado.type">{{ dado.type }}</td>
         <td *ngIf="dado.dimension">{{ dado.dimension }}</td>
         <td *ngIf="dado.residents">{{ dado.residents.length }}</td>
         <td *ngIf="dado.air_date">{{ dado.air_date }}</td>
-        <td *ngIf="dado.episode">{{ dado.episode }}</td>        
+        <td *ngIf="dado.episode">{{ dado.episode }}</td>
         <td *ngIf="detalhes"><a (click)="emitAcessarDetalhe(dado.id)">+ Detalhes</a></td>
-        </tr>
+      </tr>
     </tbody>
-</table>
+  </table>
 </div>

@@ -1,32 +1,32 @@
 <h1>Local</h1>
 <div class="row">
-    <div class="col-12 col-md-4">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4"><strong>Nome</strong></div>
-                    <div class="col-8">{{ local?.name }}</div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4"><strong>Tipo</strong></div>
-                    <div class="col-8">{{ local?.type }}</div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-4"><strong>Dimensão</strong></div>
-                    <div class="col-8">{{ local?.dimension }}</div>
-                </div>
-            </li>
-        </ul>
-    </div>        
+  <div class="col-12 col-md-4">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-4"><strong>Nome</strong></div>
+          <div class="col-8">{{ local?.name }}</div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-4"><strong>Tipo</strong></div>
+          <div class="col-8">{{ local?.type }}</div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-4"><strong>Dimensão</strong></div>
+          <div class="col-8">{{ local?.dimension }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <h2>Moradores</h2>
 <div class="row">
-    <div class="col-12 col-md-3 mb-5" *ngFor="let p of personagens">
-        <card-personagem [item]="p" (acessarDetalhe)="acessarPersonagem($event)"></card-personagem>
-    </div>
+  <div class="col-12 col-md-3 mb-5" *ngFor="let p of personagens">
+    <card-personagem [item]="p" (acessarDetalhe)="acessarPersonagem($event)"></card-personagem>
+  </div>
 </div>
