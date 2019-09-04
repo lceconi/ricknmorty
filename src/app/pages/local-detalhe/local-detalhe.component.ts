@@ -40,7 +40,11 @@ export class LocalDetalheComponent implements OnInit {
       personagens_ids.push(p_id);      
     }
     this.api.getDadosArray('character', personagens_ids).subscribe(response => {
-      this.personagens = response;
+      if (Array.isArray(response)) {
+        this.personagens = response;
+      } else {
+        this.personagens = [response];
+      }
     });
   }
 
