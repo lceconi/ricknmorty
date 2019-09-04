@@ -8,23 +8,11 @@
     <p>{{ mensagemFiltro }}</p>
   </div>
   <div class="col-12 col-md-8">
-    <div class="btn-group-sm mt-4 text-right" role="group" aria-label="Basic example">
-      <button mdbBtn type="button" class="btn-paginacao" [disabled]="!linkAnterior" (click)="paginaAnterior()">
-        &laquo; Página anterior
-      </button>
-      <button mdbBtn type="button" class="btn-paginacao" [disabled]="!linkProxima" (click)="paginaProxima()">
-        Próxima página &raquo;
-      </button>
-    </div>
+    <paginacao [linkProxima]="linkProxima" [linkAnterior]="linkAnterior" (paginaAnterior)="paginaAnterior()"  (paginaProxima)="paginaProxima()"></paginacao>
   </div>
 </div>
 <div class="row">  
-  <div class="col-12 col-md-3 mb-5" *ngFor="let p of listaPersonagensFiltrados">    
+  <div class="col-12 col-md-3 mb-5" *ngFor="let p of personagens">    
     <card-personagem [item]="p" (acessarDetalhe)="acessarPersonagem($event)"></card-personagem>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12 text-center">
-    
   </div>
 </div>

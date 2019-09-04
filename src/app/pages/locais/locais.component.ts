@@ -14,6 +14,8 @@ export class LocaisComponent implements OnInit {
   public listaLocaisFiltrados: any = [];
   public mensagemFiltro: string;
   public itensCabecalho = ['#', 'Nome', 'Tipo', 'Dimensão', 'Moradores'];
+  public linkProxima: string;
+  public linkAnterior: string;
 
   constructor(public api: ApiService, public router: Router) { }
 
@@ -21,9 +23,13 @@ export class LocaisComponent implements OnInit {
     this.carregarLocais();
   }
 
-  public carregarLocais(): void {
-    this.api.getDados('location').subscribe(response => {
+  public carregarLocais(page: string = ''): void {
+    let slug = 'location';
+    if (page) slug = slug + '/?' + page.split(/[? ]+/).pop();
+    this.api.getDados(slug).subscribe(response => {
       this.locais = response['results'];
+      this.linkProxima = response['info']['next'];
+      this.linkAnterior = response['info']['prev'];
       this.listaLocaisFiltrados = this.locais;
     })
   }
@@ -33,22 +39,33 @@ export class LocaisComponent implements OnInit {
     const valor = event.target.value;
 
     if (valor.length > 1) {
-      this.listaLocaisFiltrados = this.locais.filter(personagem => {
-        return personagem.name.toLowerCase().indexOf(valor.toLowerCase()) > -1;
-      });
+      let slug = 'location/?name=' + valor;
+      this.api.getDados(slug).subscribe(response => {
+        this.locais = response['results'];
+        this.linkProxima = response['info']['next'];
+        this.linkAnterior = response['info']['prev'];
+      }, error => {
+        this.locais = [];
+        this.linkProxima = '';
+        this.linkAnterior = '';
+        this.mensagemFiltro = 'Nenhum local encontrado.';
+      })
     } else {
       this.mensagemFiltro = '';
-      this.listaLocaisFiltrados = this.locais;
-      return;
-    }
-
-    if (valor && !this.listaLocaisFiltrados.length) {
-      this.mensagemFiltro = 'Nenhum local encontrado.';
+      this.carregarLocais();      
     }
   }
 
   public acessarLocal(id): void {
     this.router.navigate(['locais', id]);
+  }
+
+  public paginaProxima() {
+    this.carregarLocais(this.linkProxima);
+  }
+
+  public paginaAnterior() {
+    this.carregarLocais(this.linkAnterior);
   }
 
 }

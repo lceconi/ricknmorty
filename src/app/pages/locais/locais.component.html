@@ -7,10 +7,13 @@
     </div>
     <p>{{ mensagemFiltro }}</p>
   </div>
+  <div class="col-12 col-md-8">
+    <paginacao [linkProxima]="linkProxima" [linkAnterior]="linkAnterior" (paginaAnterior)="paginaAnterior()"  (paginaProxima)="paginaProxima()"></paginacao>
+  </div>
 </div>
 <div class="row">
   <div class="col-12">
-    <tabela *ngIf="listaLocaisFiltrados.length" [itens]="itensCabecalho" [dados]="listaLocaisFiltrados" [detalhes]="true" (acessarDetalhe)="acessarLocal($event)">
+    <tabela *ngIf="locais?.length" [itens]="itensCabecalho" [dados]="locais" [detalhes]="true" (acessarDetalhe)="acessarLocal($event)">
     </tabela>
   </div>
 </div>

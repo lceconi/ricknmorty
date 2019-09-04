@@ -1,0 +1,8 @@
+<div class="btn-group-sm mt-4 text-right" role="group">
+  <button mdbBtn type="button" class="btn-paginacao" [disabled]="!linkAnterior" (click)="emitPaginaAnterior()">
+    &laquo; Anterior
+  </button>
+  <button mdbBtn type="button" class="btn-paginacao" [disabled]="!linkProxima" (click)="emitPaginaProxima()">
+    Próxima &raquo;
+  </button>
+</div>

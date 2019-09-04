@@ -35,22 +35,25 @@ export class PersonagensComponent implements OnInit {
     this.router.navigate(['personagens', id]);
   }
 
-  public pesquisarPersonagem(event): string {
+  public pesquisarPersonagem(event): void {
     this.mensagemFiltro = '';
     const valor = event.target.value;
 
     if (valor.length > 1) {
-      this.listaPersonagensFiltrados = this.personagens.filter(personagem => {
-        return personagem.name.toLowerCase().indexOf(valor.toLowerCase()) > -1;
-      });
+      let slug = 'character/?name=' + valor;
+      this.api.getDados(slug).subscribe(response => {
+        this.personagens = response['results'];
+        this.linkProxima = response['info']['next'];
+        this.linkAnterior = response['info']['prev'];
+      }, error => {
+        this.personagens = [];
+        this.linkProxima = '';
+        this.linkAnterior = '';
+        this.mensagemFiltro = 'Nenhum personagem encontrado.';
+      })
     } else {
       this.mensagemFiltro = '';
-      this.listaPersonagensFiltrados = this.personagens;
-      return;
-    }
-
-    if (valor && !this.listaPersonagensFiltrados.length) {
-      this.mensagemFiltro = 'Nenhum personagem encontrado.';
+      this.carregarPersonagens();      
     }
   }
 

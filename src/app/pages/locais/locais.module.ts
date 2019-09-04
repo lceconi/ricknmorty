@@ -6,6 +6,7 @@ import { InputsModule } from 'angular-bootstrap-md';
 
 import { LocaisComponent } from './locais.component';
 import { TableComponentModule } from 'src/app/components/table/table.module';
+import { PaginacaoComponentModule } from 'src/app/components/paginacao/paginacao.module';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     InputsModule,
     TableComponentModule,
+    PaginacaoComponentModule
   ],
   declarations: [
     LocaisComponent,

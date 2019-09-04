@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,13 @@ export class ApiService {
 
   constructor(private http: HttpClient,) { }
 
-  public getDados(slug: string, id: string = '') {
+  public getDados(slug: string, id: string = ''): Observable <any> {
     let url = this.HOST + slug;
     if (id) url = url + '/' + id;
     return this.http.get(url);
   }
 
-  public getDadosArray(slug: string, ids: any) {
+  public getDadosArray(slug: string, ids: any): Observable <any> {
     let url = this.HOST + slug + '/' + ids.join();
     return this.http.get(url);
   }

@@ -6,6 +6,7 @@ import { InputsModule, ButtonsModule } from 'angular-bootstrap-md';
 
 import { PersonagensComponent } from './personagens.component';
 import { CardPersonagemComponentModule } from 'src/app/components/card-personagem/card-personagem.module';
+import { PaginacaoComponentModule } from 'src/app/components/paginacao/paginacao.module';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     InputsModule,
     ButtonsModule,
-    CardPersonagemComponentModule
+    CardPersonagemComponentModule,
+    PaginacaoComponentModule
   ],
   declarations: [
     PersonagensComponent
