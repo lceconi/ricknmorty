@@ -6,10 +6,10 @@ Este projeto foi desenvolvido por Laura Ceconi, utilizando [Angular CLI](https:/
 
 ## Instruções para rodar a aplicação
 
-1. Clonar o repositório.
-2. Acessar a pasta e rodar o comando `npm install`.
-3. Rodar o comando `npm start`.
-4. Acessar `http://localhost:4200/` pelo navegador.
+1. Clonar o repositório `git clone https://github.com/lceconi/ricknmorty`
+2. Acessar a pasta e rodar o comando `npm install`
+3. Rodar o comando `npm start`
+4. Acessar `http://localhost:4200/` pelo navegador
 
 ## Arquitetura e organização do projeto
 
