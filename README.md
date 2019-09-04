@@ -1,27 +1,37 @@
 # Ricknmorty
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+Esta aplicação tem o objetivo de apresentar graficamente os dados do seriado Rick and Morty, a partir da utilização da API open source [The Rick and Morty API](https://rickandmortyapi.com/)
 
-## Development server
+Este projeto foi desenvolvido com [Angular CLI](https://github.com/angular/angular-cli) versão 8.2.0.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instruções para rodar a aplicação
 
-## Code scaffolding
+1. Clonar o respositório.
+2. Acessar a pasta e rodar o comando `npm install`.
+3. Rodar o comando `npm start`.
+4. Acessar `http://localhost:4200/` pelo navegador.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Arquitetura e organização do projeto
 
-## Build
+Por possuir experiência com a utilização do Angular no Ionic Framework, optei por seguir a mesma arquitetura e estrutura de diretórios utilizada pelo Ionic. Isso significa que:
+* Foram criados 3 diretórios dentro do diretório `app`: `pages`, `components` e `services`.
+* No diretório `pages` estão armazenadas todas as páginas que pode ser acessada pela aplicação a partir do `Router`.
+* No diretório `components` estão armazenados os componentes customizados que podem se reutilizados pelas `pages`.
+* No diretório `services` estão as funções utilizadas para realizar as requisições AJAX para a API.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+A navegação da aplicação está desenvolvida utilizando o módulo `Router`. Sua configuração pode ser encontrada em `src/app/app-routing.module.ts`
 
-## Running unit tests
+Para cada novo Component criado, também criou-se um arquivo de tipo `module.ts`. Desta forma, cada Component pode ser tratado como um Module, sendo possível instanciá-los sob demanda, e não todos ao mesmo tempo quando é iniciada a aplicação. Esta técnica chama-se `lazy-loading`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+As requisições AJAX feitas no arquivo `api.services.ts` estão bem genéricas, por isso não se utilizou da validação por Interfaces. Isto poderia ser uma melhoria futura do projeto.
 
-## Running end-to-end tests
+Para a interface, foi utilizado o framework [Material Design for Bootstrap (MDB)](https://mdbootstrap.com/). Optei por utilizar esta biblioteca por possuir diversos componentes de interface padronizados conforme o Material Design e pela facilidade de lidar com os grids para o desenvolvimento da responsividade da aplicação. Como os módulos desta biblioteca podem ser carregados sob demanda, a aplicação mantém um bom desempenho quanto ao carregamento dos componentes.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Testes
 
-## Further help
+Foram desenvolvidos alguns testes unitários bem simples, que validam se está sendo instanciada a página correta. Gostaria de realizar testes dos filtros e das requisições para a API, porém eu precisaria de mais tempo para estudar formas de realizar estes testes. Também entra na lista de melhorias para o projeto.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Aprendizados
+
+Neste projeto pude utilizar o framework MDB, o qual nunca havia utilizado antes (experiências anteriores foram com Ionic). Gostei bastante da biblioteca por ter uma boa documentação e por ter componentes minimalistas que deixam a interface bem harmoniosa. Também gostei de utilizar a API do seriado, que também está bem documentada e é de fácil utilização.
+

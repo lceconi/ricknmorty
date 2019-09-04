@@ -3,8 +3,6 @@
 @import '~angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css?family=Lato|Passion+One&display=swap');
 
-
-
 body {
     background-color: #f5f5f5;
     font-family: 'Lato';    
@@ -38,4 +36,21 @@ h5 {
 
 img {
     max-width: 100%;
+}
+
+.btn.btn-paginacao {
+    background-color: $green-base;
+    text-transform: none;
+    color: #fff;
+}
+
+mdb-card {
+    transition: .5s;
+    &:hover {
+        opacity: .8;
+    }    
+}
+
+table th {
+    font-weight: 900;
 }

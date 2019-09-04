@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'card-personagem',
-  templateUrl: './card-personagem.component.html',
-  styleUrls: ['./card-personagem.component.scss']
+  templateUrl: './card-personagem.component.html'
 })
 export class CardPersonagemComponent implements OnInit {
 

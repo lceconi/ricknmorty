@@ -11,6 +11,8 @@ export class PersonagensComponent implements OnInit {
   public personagens: any;
   public listaPersonagensFiltrados: any = [];
   public mensagemFiltro: string;
+  public linkProxima: string;
+  public linkAnterior: string;
 
   constructor(public api: ApiService, public router: Router) { }
 
@@ -18,9 +20,13 @@ export class PersonagensComponent implements OnInit {
     this.carregarPersonagens();
   }
 
-  public carregarPersonagens(): void {
-    this.api.getDados('character').subscribe(response => {
+  public carregarPersonagens(page: string = ''): void {    
+    let slug = 'character';
+    if (page) slug = slug + '/' + page.split(/[/ ]+/).pop();    
+    this.api.getDados(slug).subscribe(response => {
       this.personagens = response['results'];
+      this.linkProxima = response['info']['next'];
+      this.linkAnterior = response['info']['prev'];
       this.listaPersonagensFiltrados = this.personagens;
     })
   }
@@ -46,6 +52,14 @@ export class PersonagensComponent implements OnInit {
     if (valor && !this.listaPersonagensFiltrados.length) {
       this.mensagemFiltro = 'Nenhum personagem encontrado.';
     }
+  }
+
+  public paginaProxima() {
+    this.carregarPersonagens(this.linkProxima);
+  }
+
+  public paginaAnterior() {
+    this.carregarPersonagens(this.linkAnterior);
   }
 
 }

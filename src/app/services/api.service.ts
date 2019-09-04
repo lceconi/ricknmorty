@@ -10,8 +10,8 @@ export class ApiService {
   constructor(private http: HttpClient,) { }
 
   public getDados(slug: string, id: string = '') {
-    let url = this.HOST + slug + '/';
-    if (id) url = url + id;
+    let url = this.HOST + slug;
+    if (id) url = url + '/' + id;
     return this.http.get(url);
   }
 
